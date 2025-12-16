@@ -1,0 +1,1158 @@
+
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Es Local - Centre d'Entrenament de Proximitat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables y reset */
+        :root {
+            --primary: #19c3c3;
+            --secondary: #10e3e3;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #10e3e3;
+            --gray: #7f8c8d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header y Navegación */
+        header {
+            background-color: var(--primary);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        .logo img{
+            width: 75px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--secondary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Secciones generales */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-100%, 50%);
+        }
+
+        /* Sección 0: Carrusel */
+        .hero {
+            padding-top: 150px;
+            position: relative;
+            background-color: var(--light);
+            color: white;
+            max-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        #logo{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 300px;
+            height: 300px;
+            border-radius: 150px;
+        }
+
+        .carousel-container {
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .carousel-slide {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            animation: slide 15s infinite;
+        }
+
+        .carousel-slide img {
+            width: 20%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes slide {
+            0%, 15% { transform: translateX(0); }
+            20%, 35% { transform: translateX(-20%); }
+            40%, 55% { transform: translateX(-40%); }
+            60%, 75% { transform: translateX(-60%); }
+            80%, 95% { transform: translateX(-80%); }
+            100% { transform: translateX(0); }
+        }
+
+        .hero-content {
+            text-align: center;
+            margin-top: 40px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--light);
+        }
+
+        /* Sección 1: El Centre */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .highlight {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid var(--secondary);
+            margin-top: 30px;
+        }
+
+        .highlight p {
+            font-style: italic;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Sección 2: Servicios */
+        .services {
+            background-color: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding: 30px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--gray);
+        }
+
+        /* Sección 3: Galería */
+        .gallery {
+            background-color: white;
+        }
+
+        .gallery-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Sección 4: Horarios */
+        .schedule {
+            background-color: #f8f9fa;
+        }
+
+        .schedule-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+        }
+
+        .weekly-schedule {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .day-schedule {
+            margin-bottom: 25px;
+        }
+
+        .day-schedule h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .hours {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hour {
+            background-color: #f1f2f6;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .app-info {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .app-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .app-info p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .app-features {
+            margin-top: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .feature i {
+            color: var(--secondary);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        /* Sección 5: Contacto */
+        .contact {
+            background-color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #f1f2f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        .contact-form-container {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1da851;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo h3 span {
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .carousel-container {
+                height: 50vh;
+            }
+        }
+
+        /* Placeholder para imágenes */
+        .placeholder-img {
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-weight: 500;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo"><img src="img%20(3).jpeg" ></a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#centre">El Centre</a></li>
+                    <li><a href="#serveis">Serveis</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#horaris">Horaris</a></li>
+                    <li><a href="#contacte">Contacte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección 0: Carrusel / Home -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="carousel-container">
+                <div>
+                    <img id="logo" src="img%20(3).jpeg">
+                </div>
+                <div class="carousel-slide">
+                    <!-- Imágenes de placeholder - reemplazar con fotos reales -->
+                    <img class="placeholder-img" src="./img%20(8).jpeg" >
+                    <img class="placeholder-img" src="./img%20(6).jpeg" >
+                    <img class="placeholder-img" src="./img%20(9).jpeg" >
+                    <img class="placeholder-img" src="./img%20(10).jpeg" >
+                    <img class="placeholder-img" src="./img%20(11).jpeg" >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 1: El Centre -->
+    <section id="centre" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>EL CENTRE</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p><strong>Es Local</strong> és un centre d'entrenament de proximitat on entrenar vol dir cuidar-te i sentir-te bé. Treballam amb entrenaments funcionals, força i programes adaptats a cada persona, sempre amb un enfocament segur i efectiu.</p>
+                    
+                    <h3>Què ens diferencia?</h3>
+                    <p>El <strong>tracte proper</strong>, l'atenció personalitzada i l'ambient de comunitat. Aquí no ets un número: t'acompanyam, t'orientam i celebram cada progrés.</p>
+                    
+                    <div class="highlight">
+                        <p>A <strong>Es Local</strong> entrenam per millorar el dia a dia, gaudir del procés i créixer junts.</p>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img class="placeholder-img" src="./img%20(7).jpeg" >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 2: Serveis -->
+    <section id="serveis" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>SERVEIS / CLASSES</h2>
+                <p style="text-align: center; margin-top: 20px; font-size: 1.2rem;">Et presentam els nostres serveis:</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Entrenament funcional</h3>
+                    <p>Sessions dinàmiques que treballen tot el cos amb moviments reals. Milloram força, mobilitat i resistència per sentir-te millor en el dia a dia.</p>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Hybrid Fit</h3>
+                    <p>Entrenaments d'alta intensitat que combinen força i resistència. Ideal per a qui vol superar-se, millorar el rendiment i posar-se a prova a cada sessió.</p>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Entrenaments personals</h3>
+                    <p>Entrenament 100% personalitzat, adaptat als teus objectius i nivell. Atenció individual per avançar de manera segura i efectiva.</p>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Crosskids</h3>
+                    <p>Entrenaments pensats perquè els més petits es moguin, guanyin confiança i força mentre es diverteixen i creen hàbits saludables.</p>
+                </div>
+                
+                <!-- Servicio 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3>Força aplicada al futbol</h3>
+                    <p>Sessions específiques per millorar el rendiment futbolístic, prevenir lesions i guanyar força, velocitat i estabilitat al camp.</p>
+                </div>
+                
+                <!-- Servicio 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Grup de running</h3>
+                    <p>Entrenaments en grup per millorar la tècnica, la resistència i la motivació. Córrer acompanyat fa que tot sigui més fàcil i divertit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 3: Galería -->
+    <section id="galeria" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>GALERIA</h2>
+            </div>
+            
+            <p class="gallery-intro">Aquí tens el nostre centre! A continuació trobaràs una selecció de fotos del nostre espai, les nostres classes i la comunitat d'Es Local.</p>
+            
+            <div class="gallery-grid">
+                <!-- Fotos de placeholder - reemplazar con 20 fotos reales -->
+                <div class="gallery-item">
+                    <img class="placeholder-img" src="./img%20(9).jpeg" >
+                </div>
+                <div class="gallery-item">
+                    <img class="placeholder-img" src="./img%20(8).jpeg" >
+                </div>
+                <div class="gallery-item">
+                    <img class="placeholder-img" src="./img%20(10).jpeg" >
+                </div>
+                <div class="gallery-item">
+                    <img class="placeholder-img" src="./img%20(6).jpeg" >
+                </div>
+                <div class="gallery-item">
+                    <img class="placeholder-img" src="./img%20(11).jpeg" >
+                </div>
+                <div class="gallery-item">
+                    <img class="placeholder-img" src="./img%20(5).jpeg" >
+                </div>
+                <div class="gallery-item">
+                    <img class="placeholder-img" src="./img%20(12).jpeg" >
+                </div>
+                <div class="gallery-item">
+                    <img class="placeholder-img" src="./img%20(13).jpeg" >
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Sección 4: Horaris -->
+    <section id="horaris" class="schedule">
+        <div class="container">
+            <div class="section-title">
+                <h2>HORARIS</h2>
+            </div>
+            
+            <div class="schedule-container">
+                <div class="weekly-schedule">
+                    <h3>Classes setmanals</h3>
+                    
+                    <div class="day-schedule">
+                        <h4>Dilluns</h4>
+                        <div class="hours">
+                            <span class="hour">9:30h</span>
+                            <span class="hour">10:30h</span>
+                            <span class="hour">16:00h</span>
+                            <span class="hour">17:00h</span>
+                            <span class="hour">18:30h</span>
+                            <span class="hour">19:30h</span>
+                        </div>
+                    </div>
+                    
+                    <div class="day-schedule">
+                        <h4>Dimarts</h4>
+                        <div class="hours">
+                            <span class="hour">9:30h</span>
+                            <span class="hour">17:00h</span>
+                            <span class="hour">17:30h</span>
+                            <span class="hour">18:30h</span>
+                            <span class="hour">19:30h</span>
+                        </div>
+                    </div>
+                    
+                    <div class="day-schedule">
+                        <h4>Dimecres</h4>
+                        <div class="hours">
+                            <span class="hour">9:30h</span>
+                            <span class="hour">16:00h</span>
+                            <span class="hour">17:00h</span>
+                            <span class="hour">17:30h</span>
+                            <span class="hour">18:30h</span>
+                            <span class="hour">19:30h</span>
+                        </div>
+                    </div>
+                    
+                    <div class="day-schedule">
+                        <h4>Dijous</h4>
+                        <div class="hours">
+                            <span class="hour">9:30h</span>
+                            <span class="hour">17:30h</span>
+                            <span class="hour">18:30h</span>
+                            <span class="hour">19:30h</span>
+                        </div>
+                    </div>
+                    
+                    <div class="day-schedule">
+                        <h4>Divendres</h4>
+                        <div class="hours">
+                            <span class="hour">9:30h</span>
+                            <span class="hour">17:00h</span>
+                            <span class="hour">17:30h</span>
+                            <span class="hour">18:30h</span>
+                            <span class="hour">20:00h</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="app-info">
+                    <h3>Reserva fàcil amb la nostra APP</h3>
+                    <p>Amb la inscripció a <strong>Es Local</strong>, donam d'alta tots els clients a la nostra <strong>APP</strong>, des d'on poden <strong>reservar setmanalment totes les classes</strong> a les quals vulguin assistir.</p>
+                    <p>Podràs <strong>modificar o cancel·lar la reserva</strong> fàcilment si et canvien els plans o se't complica el dia.</p>
+                    
+                    <div class="app-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Entrena amb llibertat</h4>
+                                <p>Al teu ritme i quan millor et vagi.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Reserva setmanal</h4>
+                                <p>Selecciona les classes que vulguis assistir cada setmana.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Modificacions fàcils</h4>
+                                <p>Canvia o cancel·la les teves reserves quan ho necessitis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contacte" class="btn">Demana més informació</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 5: Contacte -->
+    <section id="contacte" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>CONTACTE</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contacta amb nosaltres</h3>
+                    <p>Estem aquí per ajudar-te i resoldre totes les teves dubtes. No dubtis a contactar amb nosaltres per qualsevol pregunta sobre els nostres serveis, horaris o inscripcions.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Telèfon</h4>
+                                <p>+34 613 00 25 89</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>eslocal@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Ubicació</h4>
+                                <p> Carrer de Passaratx, 78<br>Porreres, Illes Balears</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    
+                    <a href="https://wa.me/34123456789" class="btn whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Contacta'ns per WhatsApp
+                    </a>
+                </div>
+                
+                <div class="contact-form-container">
+                    <div class="contact-form">
+                        <h3>Envia'ns un missatge</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Nom complet</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Telèfon</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Missatge</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">Enviar missatge</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>ES <span>LOCAL</span></h3>
+                    <p>Centre d'entrenament de proximitat on entrenar vol dir cuidar-te i sentir-te bé.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Enllaços ràpids</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#centre">El Centre</a></li>
+                        <li><a href="#serveis">Serveis</a></li>
+                        <li><a href="#galeria">Galeria</a></li>
+                        <li><a href="#horaris">Horaris</a></li>
+                        <li><a href="#contacte">Contacte</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Serveis</h4>
+                    <ul>
+                        <li><a href="#serveis">Entrenament funcional</a></li>
+                        <li><a href="#serveis">Hybrid Fit</a></li>
+                        <li><a href="#serveis">Entrenaments personals</a></li>
+                        <li><a href="#serveis">Crosskids</a></li>
+                        <li><a href="#serveis">Força aplicada al futbol</a></li>
+                        <li><a href="#serveis">Grup de running</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contacte</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +34 613 00 25 89</li>
+                        <li><i class="fas fa-envelope"></i> eslocal@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Carrer de Passaratx 78, Porreres, Illes Balears</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Es Local - Centre d'Entrenament. Tots els drets reservats.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú móvil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Formulario de contacto
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aquí normalmente se enviaría el formulario a un servidor
+            // Por ahora, solo mostramos un mensaje de confirmación
+            alert('Gràcies pel teu missatge! Et contactarem aviat.');
+            contactForm.reset();
+        });
+        
+        // Carrusel automático (ya está implementado con CSS animation)
+        // Solo para asegurar que el carrusel se reinicie correctamente
+        const carouselSlide = document.querySelector('.carousel-slide');
+        
+        // Reiniciar animación cada cierto tiempo para evitar desincronización
+        setInterval(() => {
+            carouselSlide.style.animation = 'none';
+            setTimeout(() => {
+                carouselSlide.style.animation = 'slide 15s infinite';
+            }, 10);
+        }, 15000); // Cada 15 segundos (duración de la animación)
+    </script>
+</body>
+</html>
